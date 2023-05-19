@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FIAP.Bizzar.Views.VitrinePage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="CarrinhoItens" Text="Itens: 0"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Grid Padding="10" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Button Text="Produto 1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Pressed="ButtonProduct_Pressed" Grid.Row="0" Grid.Column="0"></Button>
+                <Button Text="Produto 2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Pressed="ButtonProduct_Pressed" Grid.Row="0" Grid.Column="1"></Button>
+                <Button Text="Produto 3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Pressed="ButtonProduct_Pressed" Grid.Row="1" Grid.Column="0"></Button>
+                <Button Text="Produto 4" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Pressed="ButtonProduct_Pressed" Grid.Row="1" Grid.Column="1"></Button>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
