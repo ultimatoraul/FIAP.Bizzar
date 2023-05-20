@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Bizzar.ViewModel"
+             x:Class="FIAP.Bizzar.Views.HomePage">
+    <ContentPage.BindingContext>
+        <vm:HomeViewModel></vm:HomeViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="Login" Text="Login"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout Padding="10">
+            <Frame>
+                <StackLayout>
+                    <Entry Text="{Binding CampoBusca}" Placeholder="Digite o nome da loja ou produto"></Entry>
+                </StackLayout>
+            </Frame>
+            <Frame>
+                <StackLayout>
+                    <Label Text="Ao vivo" FontSize="20"></Label>
+
+                    <ListView ItemsSource="{Binding ListaLoja}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal">
+                                        <StackLayout>
+                                            <StackLayout Orientation="Horizontal">
+                                                <Label Text="{Binding IdUsuario}"></Label>
+                                            </StackLayout>
+                                            <StackLayout>
+                                                <Label Text="{Binding Nome}"></Label>
+                                            </StackLayout>
+                                        </StackLayout>
+                                        <!--<Button HorizontalOptions="EndAndExpand" Text="Deletar" Command="{Binding DeletarCommand}"></Button>-->
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+
+                <!--<StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <Label Text="Ao Vivo" 
+                            LineBreakMode="NoWrap" 
+                            Style="{DynamicResource ListItemTextStyle}" 
+                            FontSize="16" />
+                    <Grid Padding="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Button Text="Live do Marcão"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.Column="0"></Button>
+                        <Button Text="Bazar da Vanessa" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.Column="1"></Button>
+                        <Button Text="Tudo em Casa" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="1" Grid.Column="0"></Button>
+                        <Button Text="Roupas da Lu" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="1" Grid.Column="1"></Button>
+                    </Grid>
+                </StackLayout>-->
+            </Frame>
+            <!--<Frame>
+                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <Label Text="Produtos em destaque" 
+                            LineBreakMode="NoWrap" 
+                            Style="{DynamicResource ListItemTextStyle}" 
+                            FontSize="16" />
+                    <Grid Padding="10" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Button Text="Produto 1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.Column="0"></Button>
+                        <Button Text="Produto 2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.Column="1"></Button>
+                        <Button Text="Produto 3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="1" Grid.Column="0"></Button>
+                        <Button Text="Produto 4" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="1" Grid.Column="1"></Button>
+                    </Grid>
+                </StackLayout>
+            </Frame>-->
+            <!--<Frame>
+                <StackLayout>
+                    <CollectionView x:Name="collectionViewCursos"
+                                    Margin="10"
+                                    SelectionMode="Single"
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="FillAndExpand"
+                                    ItemsSource="{Binding ListaCursos}"
+                                    SelectedItem="{Binding CursoSelecionado}"
+                                    SelectionChangedCommand="{Binding SelecionadoCommand}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout>
+                                    <Label Text="{Binding Nome}" FontSize="18" FontAttributes="Bold"/>
+                                    <Label Text="{Binding Status}" FontSize="12" FontAttributes="Bold"/>
+                                </StackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+            </Frame>-->
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

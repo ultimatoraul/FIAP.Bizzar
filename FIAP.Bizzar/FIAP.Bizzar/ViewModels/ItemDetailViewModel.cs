@@ -1,7 +1,6 @@
 ﻿using FIAP.Bizzar.Models;
 using System;
 using System.Diagnostics;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace FIAP.Bizzar.ViewModels
@@ -9,15 +8,20 @@ namespace FIAP.Bizzar.ViewModels
     [QueryProperty(nameof(ItemId), nameof(ItemId))]
     public class ItemDetailViewModel : BaseViewModel
     {
-        private string itemId;
-        private string text;
-        private string description;
-        public string Id { get; set; }
-
-        public string Text
+        public ItemDetailViewModel(ProdutoModel itemModel)
         {
-            get => text;
-            set => SetProperty(ref text, value);
+            this.ItemId = itemModel.Id;
+            this.Name = itemModel.Nome;
+            this.Description = itemModel.Descricao;
+        }
+
+        private Guid itemId;
+        private string name;
+        private string description;
+        public string Name
+        {
+            get => name;
+            set => SetProperty(ref name, value);
         }
 
         public string Description
@@ -26,7 +30,7 @@ namespace FIAP.Bizzar.ViewModels
             set => SetProperty(ref description, value);
         }
 
-        public string ItemId
+        public Guid ItemId
         {
             get
             {
@@ -39,14 +43,14 @@ namespace FIAP.Bizzar.ViewModels
             }
         }
 
-        public async void LoadItemId(string itemId)
+        public async void LoadItemId(Guid itemId)
         {
             try
             {
-                var item = await DataStore.GetItemAsync(itemId);
-                Id = item.Id;
-                Text = item.Text;
-                Description = item.Description;
+                var item = await DataStore.GetAsync(itemId);
+                ItemId = item.Id;
+                Name = item.Nome;
+                Description = item.Descricao;
             }
             catch (Exception)
             {

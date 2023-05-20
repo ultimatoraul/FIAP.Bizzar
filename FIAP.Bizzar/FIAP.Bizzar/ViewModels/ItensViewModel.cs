@@ -8,22 +8,22 @@ using Xamarin.Forms;
 
 namespace FIAP.Bizzar.ViewModels
 {
-    public class ItemsViewModel : BaseViewModel
+    public class ItensViewModel : BaseViewModel
     {
-        private Item _selectedItem;
+        private ProdutoModel _selectedItem;
 
-        public ObservableCollection<Item> Items { get; }
+        public ObservableCollection<ProdutoModel> Items { get; }
         public Command LoadItemsCommand { get; }
         public Command AddItemCommand { get; }
-        public Command<Item> ItemTapped { get; }
+        public Command<ProdutoModel> ItemTapped { get; }
 
-        public ItemsViewModel()
+        public ItensViewModel()
         {
             Title = "Browse";
-            Items = new ObservableCollection<Item>();
+            Items = new ObservableCollection<ProdutoModel>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
 
-            ItemTapped = new Command<Item>(OnItemSelected);
+            ItemTapped = new Command<ProdutoModel>(OnItemSelected);
 
             AddItemCommand = new Command(OnAddItem);
         }
@@ -35,7 +35,7 @@ namespace FIAP.Bizzar.ViewModels
             try
             {
                 Items.Clear();
-                var items = await DataStore.GetItemsAsync(true);
+                var items = await DataStore.GetAsync(true);
                 foreach (var item in items)
                 {
                     Items.Add(item);
@@ -57,7 +57,7 @@ namespace FIAP.Bizzar.ViewModels
             SelectedItem = null;
         }
 
-        public Item SelectedItem
+        public ProdutoModel SelectedItem
         {
             get => _selectedItem;
             set
@@ -72,7 +72,7 @@ namespace FIAP.Bizzar.ViewModels
             await Shell.Current.GoToAsync(nameof(NewItemPage));
         }
 
-        async void OnItemSelected(Item item)
+        async void OnItemSelected(ProdutoModel item)
         {
             if (item == null)
                 return;

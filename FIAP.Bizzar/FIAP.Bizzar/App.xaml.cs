@@ -1,8 +1,6 @@
 ﻿using FIAP.Bizzar.Services;
 using FIAP.Bizzar.Views;
-using System;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace FIAP.Bizzar
 {
@@ -13,9 +11,9 @@ namespace FIAP.Bizzar
         {
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
+            DependencyService.Register<MockDataLoja>();
             //MainPage = new AppShell();
-            MainPage = new NavigationPage(new LojasPage());
+            MainPage = new NavigationPage(new HomePage());
 
         }
 

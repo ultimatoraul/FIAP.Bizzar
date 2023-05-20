@@ -8,9 +8,9 @@ using Xamarin.Forms;
 
 namespace FIAP.Bizzar.ViewModels
 {
-    public class BaseViewModel : INotifyPropertyChanged
+    public abstract class BaseViewModel : INotifyPropertyChanged
     {
-        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
+        public IData<ProdutoModel> DataStore => DependencyService.Get<IData<ProdutoModel>>();
 
         bool isBusy = false;
         public bool IsBusy
