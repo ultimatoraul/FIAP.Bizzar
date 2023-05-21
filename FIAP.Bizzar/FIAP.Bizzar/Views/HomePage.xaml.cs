@@ -1,4 +1,5 @@
-﻿using FIAP.Bizzar.Services;
+﻿using FIAP.Bizzar.Data;
+using FIAP.Bizzar.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -9,9 +10,13 @@ namespace FIAP.Bizzar.Views
     {
         public HomePage()
         {
-            InitializeComponent();
+            if (new LojaRepository().GetList().Count == 0)
+                new MockDataLoja().SaveMock();
 
-            //new MockDataLoja().SaveMock();
+            if (new ProdutoRepository().GetList().Count == 0)
+                new MockDataProduto().SaveMock();
+
+            InitializeComponent();
         }
 
         protected override void OnAppearing()

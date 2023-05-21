@@ -27,6 +27,15 @@
                     </VisualStateGroupList>
                 </Setter>
             </Style>
+            <Style x:Key="buttonGridHome" TargetType="Button">
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="VerticalOptions" Value="FillAndExpand" />
+                <!--<Setter Property="BorderColor" Value="Lime" />
+                <Setter Property="BorderRadius" Value="5" />
+                <Setter Property="BorderWidth" Value="5" />
+                <Setter Property="WidthRequest" Value="200" />
+                <Setter Property="TextColor" Value="Teal" />-->
+            </Style>
         </ResourceDictionary>        
     </Application.Resources>
 </Application>

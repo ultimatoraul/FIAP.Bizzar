@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:vm="clr-namespace:Bizzar.ViewModel"
+             xmlns:vm="clr-namespace:Bizzar.ViewModels"
              x:Class="FIAP.Bizzar.Views.HomePage">
     <ContentPage.BindingContext>
         <vm:HomeViewModel></vm:HomeViewModel>
     </ContentPage.BindingContext>
     <ContentPage.ToolbarItems>
-        <ToolbarItem x:Name="Login" Text="Login"/>
+        <ToolbarItem x:Uid="Login" Text="Login"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout Padding="10">
@@ -16,95 +16,64 @@
                     <Entry Text="{Binding CampoBusca}" Placeholder="Digite o nome da loja ou produto"></Entry>
                 </StackLayout>
             </Frame>
-            <Frame>
+            <!--<Frame>
                 <StackLayout>
                     <Label Text="Ao vivo" FontSize="20"></Label>
-
-                    <ListView ItemsSource="{Binding ListaLoja}">
+                    <ListView ItemsSource="{Binding ListaLoja}" HeightRequest="200">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
                                     <StackLayout Orientation="Horizontal">
                                         <StackLayout>
-                                            <StackLayout Orientation="Horizontal">
+                                            --><!--<StackLayout Orientation="Horizontal">
                                                 <Label Text="{Binding IdUsuario}"></Label>
-                                            </StackLayout>
+                                            </StackLayout>--><!--
                                             <StackLayout>
                                                 <Label Text="{Binding Nome}"></Label>
                                             </StackLayout>
                                         </StackLayout>
-                                        <!--<Button HorizontalOptions="EndAndExpand" Text="Deletar" Command="{Binding DeletarCommand}"></Button>-->
+                                        --><!--<Button HorizontalOptions="EndAndExpand" Text="Deletar" Command="{Binding DeletarCommand}"></Button>--><!--
                                     </StackLayout>
                                 </ViewCell>
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
                 </StackLayout>
-
-                <!--<StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            </Frame>-->
+            <Frame>
+                <StackLayout HeightRequest="300" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                     <Label Text="Ao Vivo" 
                             LineBreakMode="NoWrap" 
-                            Style="{DynamicResource ListItemTextStyle}" 
                             FontSize="16" />
                     <Grid Padding="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                        <Grid.RowDefinitions>
-                            <RowDefinition />
-                            <RowDefinition />
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition />
-                            <ColumnDefinition />
-                        </Grid.ColumnDefinitions>
-                        <Button Text="Live do Marcão"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.Column="0"></Button>
-                        <Button Text="Bazar da Vanessa" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.Column="1"></Button>
-                        <Button Text="Tudo em Casa" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="1" Grid.Column="0"></Button>
-                        <Button Text="Roupas da Lu" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="1" Grid.Column="1"></Button>
+                        <Button Text="{Binding ListaLoja[0].Nome}" Style="{StaticResource  buttonGridHome}" Grid.Row="0" Grid.Column="0"
+                                Command="{Binding SelecionarLojaCommand}" CommandParameter="{Binding ListaLoja[0].Id}" ></Button>
+                        <Button Text="{Binding ListaLoja[1].Nome}" Style="{StaticResource  buttonGridHome}" Grid.Row="0" Grid.Column="1"
+                                Command="{Binding SelecionarLojaCommand}" CommandParameter="{Binding ListaLoja[1].Id}"></Button>
+                        <Button Text="{Binding ListaLoja[2].Nome}" Style="{StaticResource  buttonGridHome}" Grid.Row="1" Grid.Column="0"
+                                Command="{Binding SelecionarLojaCommand}" CommandParameter="{Binding ListaLoja[2].Id}"></Button>
+                        <Button Text="{Binding ListaLoja[3].Nome}" Style="{StaticResource  buttonGridHome}" Grid.Row="1" Grid.Column="1"
+                                Command="{Binding SelecionarLojaCommand}" CommandParameter="{Binding ListaLoja[3].Id}"></Button>
                     </Grid>
-                </StackLayout>-->
+                </StackLayout>
             </Frame>
-            <!--<Frame>
-                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                    <Label Text="Produtos em destaque" 
+            <Frame>
+                <StackLayout HeightRequest="300" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <Label Text="Produtos em Destaque" 
                             LineBreakMode="NoWrap" 
-                            Style="{DynamicResource ListItemTextStyle}" 
                             FontSize="16" />
-                    <Grid Padding="10" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                        <Grid.RowDefinitions>
-                            <RowDefinition />
-                            <RowDefinition />
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition />
-                            <ColumnDefinition />
-                        </Grid.ColumnDefinitions>
-                        <Button Text="Produto 1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.Column="0"></Button>
-                        <Button Text="Produto 2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.Column="1"></Button>
-                        <Button Text="Produto 3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="1" Grid.Column="0"></Button>
-                        <Button Text="Produto 4" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="1" Grid.Column="1"></Button>
+                    <Grid Padding="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <Button Text="{Binding ListaProduto[0].Nome}" Style="{StaticResource  buttonGridHome}" Grid.Row="0" Grid.Column="0"
+                                 Command="{Binding SelecionarProdutoCommand}" CommandParameter="{Binding ListaProduto[0].Id}"></Button>
+                        <Button Text="{Binding ListaProduto[1].Nome}" Style="{StaticResource  buttonGridHome}" Grid.Row="0" Grid.Column="1"
+                                 Command="{Binding SelecionarProdutoCommand}" CommandParameter="{Binding ListaProduto[1].Id}"></Button>
+                        <Button Text="{Binding ListaProduto[2].Nome}" Style="{StaticResource  buttonGridHome}" Grid.Row="1" Grid.Column="0"
+                                 Command="{Binding SelecionarProdutoCommand}" CommandParameter="{Binding ListaProduto[2].Id}"></Button>
+                        <Button Text="{Binding ListaProduto[3].Nome}" Style="{StaticResource  buttonGridHome}" Grid.Row="1" Grid.Column="1"
+                                 Command="{Binding SelecionarProdutoCommand}" CommandParameter="{Binding ListaProduto[3].Id}"></Button>
                     </Grid>
                 </StackLayout>
-            </Frame>-->
-            <!--<Frame>
-                <StackLayout>
-                    <CollectionView x:Name="collectionViewCursos"
-                                    Margin="10"
-                                    SelectionMode="Single"
-                                    HorizontalOptions="FillAndExpand"
-                                    VerticalOptions="FillAndExpand"
-                                    ItemsSource="{Binding ListaCursos}"
-                                    SelectedItem="{Binding CursoSelecionado}"
-                                    SelectionChangedCommand="{Binding SelecionadoCommand}">
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate>
-                                <StackLayout>
-                                    <Label Text="{Binding Nome}" FontSize="18" FontAttributes="Bold"/>
-                                    <Label Text="{Binding Status}" FontSize="12" FontAttributes="Bold"/>
-                                </StackLayout>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
-                </StackLayout>
-            </Frame>-->
+            </Frame>          
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

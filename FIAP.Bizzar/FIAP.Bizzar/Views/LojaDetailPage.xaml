@@ -2,14 +2,13 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodel="clr-namespace:FIAP.Bizzar.ViewModels" 
-             x:DataType="viewmodel:ProdutoViewModel"
-             x:Class="FIAP.Bizzar.Views.ItemDetailPage">
+             x:DataType="viewmodel:LojaViewModel"
+             x:Class="FIAP.Bizzar.Views.LojaDetailPage">
     <ContentPage.Content>
         <StackLayout Spacing="20" Padding="15">
-            <Label Text="Produto:" FontSize="Medium" />
-            <Label Text="{Binding NomeProduto}" FontSize="Small"/>
-            <Label Text="Descrição:" FontSize="Medium" />
-            <Label Text="{Binding DescricaoProduto}" FontSize="Small"/>
+            <Label Text="Canal:" FontSize="Medium" />
+            <Label Text="{Binding NomeLoja}" FontSize="Small"/>
+            <Label Text="{Binding EmailLoja}" FontSize="Small"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

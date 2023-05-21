@@ -6,12 +6,12 @@ using Xamarin.Forms.Xaml;
 namespace FIAP.Bizzar.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ItemDetailPage : ContentPage
+    public partial class LojaDetailPage : ContentPage
     {
-        public ItemDetailPage(ProdutoModel itemModel)
+        public LojaDetailPage(LojaModel itemModel)
         {
             InitializeComponent();
-            var vm = new ProdutoViewModel(itemModel);
+            var vm = new LojaViewModel(itemModel);
             BindingContext = vm;
         }
     }

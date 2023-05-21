@@ -1,12 +1,12 @@
 ﻿using FIAP.Bizzar.Data;
 using FIAP.Bizzar.Models;
-using FIAP.Bizzar.ViewModels;
+using System;
 using System.Collections.ObjectModel;
 using Xamarin.Forms;
 
-namespace FIAP.Bizzar.ViewModel
+namespace FIAP.Bizzar.ViewModels
 {
-    internal class LojaViewModel : BaseViewModel
+    public class LojaViewModel : BaseViewModel
     {
 		private readonly LojaRepository RepositoryLoja;
 
@@ -17,9 +17,16 @@ namespace FIAP.Bizzar.ViewModel
             CarregarListaLoja();
         }
 
-        private int idLoja;
+        public LojaViewModel(LojaModel model)
+        {
+            this.IdLoja = model.Id;
+            this.NomeLoja = model.Nome;
+            this.EmailLoja = model.Email;
+        }
 
-		public int IdLoja
+        private Guid idLoja;
+
+		public Guid IdLoja
 		{
 			get { return idLoja; }
 			set { idLoja = value; }

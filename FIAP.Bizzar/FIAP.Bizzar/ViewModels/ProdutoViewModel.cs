@@ -1,12 +1,13 @@
 ﻿using FIAP.Bizzar.Data;
 using FIAP.Bizzar.Models;
-using FIAP.Bizzar.ViewModels;
+using System;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using Xamarin.Forms;
 
-namespace FIAP.Bizzar.ViewModel
+namespace FIAP.Bizzar.ViewModels
 {
-    internal class ProdutoViewModel : BaseViewModel
+    public class ProdutoViewModel : BaseViewModel
     {
 		private readonly ProdutoRepository RepositoryProduto;
 
@@ -17,9 +18,16 @@ namespace FIAP.Bizzar.ViewModel
             CarregarListaProduto();
         }
 
-        private int idProduto;
+        public ProdutoViewModel(ProdutoModel model)
+        {
+            this.IdProduto = model.Id;
+            this.NomeProduto = model.Nome;
+            this.DescricaoProduto = model.Descricao;
+        }
 
-		public int IdProduto
+        private Guid idProduto;
+
+		public Guid IdProduto
 		{
 			get { return idProduto; }
 			set { idProduto = value; }
@@ -64,7 +72,7 @@ namespace FIAP.Bizzar.ViewModel
                     CarregarListaProduto();
                 });
 			}
-		}
+        }
 
         public void CarregarListaProduto()
         {

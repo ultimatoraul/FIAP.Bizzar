@@ -20,7 +20,10 @@ namespace FIAP.Bizzar.Services
                 new ProdutoModel { Id = Guid.NewGuid(), Nome = "Camisa", Descricao="This is an item description." },
                 new ProdutoModel { Id = Guid.NewGuid(), Nome = "Tênis", Descricao="This is an item description." },
             };
+        }
 
+        public void SaveMock()
+        {
             foreach (var item in itens)
                 new ProdutoRepository().Insert(item);
         }

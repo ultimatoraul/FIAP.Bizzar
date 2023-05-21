@@ -1,10 +1,14 @@
-﻿using FIAP.Bizzar.Data;
+﻿using FIAP.Bizzar;
+using FIAP.Bizzar.Data;
 using FIAP.Bizzar.Models;
 using FIAP.Bizzar.ViewModels;
+using FIAP.Bizzar.Views;
+using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using Xamarin.Forms;
 
-namespace Bizzar.ViewModel
+namespace Bizzar.ViewModels
 {
     internal class HomeViewModel : BaseViewModel
     {
@@ -24,8 +28,65 @@ namespace Bizzar.ViewModel
         public string CampoBusca
         {
             get { return campoBusca; }
-            set { campoBusca = value; }
+            set
+            {
+                SetProperty(ref campoBusca, value);
+                CarregarListaLoja();
+                if (!string.IsNullOrEmpty(campoBusca))
+                    ListaLoja = new ObservableCollection<LojaModel>(ListaLoja.Where(c => c.Nome.ToLower().Contains(campoBusca.ToLower())));
+            }
         }
+
+        private LojaModel lojaSelecionado;
+        public LojaModel LojaSelecionado
+        {
+            get { return lojaSelecionado; }
+            set { SetProperty(ref lojaSelecionado, value); }
+        }
+
+        private Command selecionarLojaCommand;
+        public Command SelecionarLojaCommand
+        {
+            get
+            {
+                if (selecionarLojaCommand == null)
+                {
+                    selecionarLojaCommand = new Command(async (parameter) =>
+                    {
+                        LojaSelecionado = ListaLoja.FirstOrDefault(a => a.Id == (Guid)parameter);
+                        await App.Current.MainPage.Navigation.PushAsync(new LojaDetailPage(LojaSelecionado));
+                    });
+                }
+                return selecionarLojaCommand;
+            }
+            set { selecionarLojaCommand = value; }
+        }
+
+        private ProdutoModel produtoSelecionado;
+        public ProdutoModel ProdutoSelecionado
+        {
+            get { return produtoSelecionado; }
+            set { SetProperty(ref produtoSelecionado, value); }
+        }
+
+        private Command selecionarProdutoCommand;
+        public Command SelecionarProdutoCommand
+        {
+            get
+            {
+                if (selecionarProdutoCommand == null)
+                {
+                    selecionarProdutoCommand = new Command(async (parameter) =>
+                    {
+                        ProdutoSelecionado = ListaProduto.FirstOrDefault(a => a.Id == (Guid)parameter);
+                        await App.Current.MainPage.Navigation.PushAsync(new ItemDetailPage(ProdutoSelecionado));
+                    });
+                }
+                return selecionarProdutoCommand;
+            }
+            set { selecionarProdutoCommand = value; }
+        }
+
 
         #region Loja
         private readonly LojaRepository RepositoryLoja;

@@ -1,7 +1,4 @@
 ﻿using FIAP.Bizzar.Views;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Xamarin.Forms;
 
 namespace FIAP.Bizzar.ViewModels
